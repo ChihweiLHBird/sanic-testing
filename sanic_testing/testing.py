@@ -109,6 +109,11 @@ class SanicTestClient:
                     response = await getattr(session, method.lower())(
                         url, *args, **kwargs
                     )
+                    print(response.headers)
+                    print(response.cookies.jar)
+                    print(type(response.cookies.jar))
+                    print(list(response.cookies.jar))
+                    print(response.text)
                 except httpx.HTTPError as e:
                     if hasattr(e, "response"):
                         response = getattr(e, "response")
